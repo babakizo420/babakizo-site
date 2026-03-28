@@ -19,6 +19,7 @@ function useInView(th=0.1){const r=useRef(null);const[v,setV]=useState(false);us
 function useMouseGlow(r){const[p,setP]=useState({x:0,y:0,active:false});useEffect(()=>{const e=r.current;if(!e)return;const m=(ev)=>{const b=e.getBoundingClientRect();setP({x:ev.clientX-b.left,y:ev.clientY-b.top,active:true})};const l=()=>setP(x=>({...x,active:false}));e.addEventListener("mousemove",m);e.addEventListener("mouseleave",l);return()=>{e.removeEventListener("mousemove",m);e.removeEventListener("mouseleave",l)}},[r]);return p}
 function useTyper(p,s=65,d=30,w=2200){const[t,setT]=useState("");const[i,setI]=useState(0);const[dl,setD]=useState(false);useEffect(()=>{const c=p[i];let tm;if(!dl&&t===c)tm=setTimeout(()=>setD(true),w);else if(dl&&t===""){setD(false);setI(x=>(x+1)%p.length)}else if(dl)tm=setTimeout(()=>setT(x=>x.slice(0,-1)),d);else tm=setTimeout(()=>setT(c.slice(0,t.length+1)),s);return()=>clearTimeout(tm)},[t,i,dl]);return t}
 function useCountUp(target,dur=1600,start=false){const[v,setV]=useState(0);useEffect(()=>{if(!start)return;let s;const a=(ts)=>{if(!s)s=ts;const p=Math.min((ts-s)/dur,1);setV(Math.floor((1-Math.pow(1-p,3))*target));if(p<1)requestAnimationFrame(a)};requestAnimationFrame(a)},[start,target,dur]);return v}
+function Carousel({children,bg,gold}){const sr=useRef(null);const[cl,setCl]=useState(false);const[cr,setCr]=useState(true);const check=()=>{const e=sr.current;if(!e)return;setCl(e.scrollLeft>10);setCr(e.scrollLeft<e.scrollWidth-e.clientWidth-10)};useEffect(()=>{const e=sr.current;check();if(e){e.addEventListener('scroll',check,{passive:true});return()=>e.removeEventListener('scroll',check)}},[]);return <div style={{position:"relative"}}>{cl&&<div style={{position:"absolute",left:0,top:0,bottom:0,width:40,background:`linear-gradient(to right, ${bg}, transparent)`,zIndex:5,pointerEvents:"none"}}/>}{cr&&<div style={{position:"absolute",right:0,top:0,bottom:0,width:40,background:`linear-gradient(to left, ${bg}, transparent)`,zIndex:5,pointerEvents:"none"}}/>}{cl&&<button onClick={()=>sr.current?.scrollBy({left:-280,behavior:"smooth"})} style={{position:"absolute",left:4,top:"50%",transform:"translateY(-50%)",zIndex:10,width:32,height:32,borderRadius:"50%",background:`${gold}15`,border:`1px solid ${gold}30`,color:gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>←</button>}{cr&&<button onClick={()=>sr.current?.scrollBy({left:280,behavior:"smooth"})} style={{position:"absolute",right:4,top:"50%",transform:"translateY(-50%)",zIndex:10,width:32,height:32,borderRadius:"50%",background:`${gold}15`,border:`1px solid ${gold}30`,color:gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>→</button>}<div ref={sr} style={{display:"flex",gap:14,overflowX:"auto",scrollSnapType:"x mandatory",WebkitOverflowScrolling:"touch",scrollbarWidth:"none",msOverflowStyle:"none",padding:"4px 2px 12px"}}>{children}</div></div>}
 
 const divisions=[
   {name:"Pejji",tag:"Web Agency",desc:"Digital presence for Nigerian SMEs powering Africa's largest economy.",icon:"🌍",accent:"#4ECDC4"},
@@ -80,19 +81,6 @@ export default function BabakizoV5Final(){
 
   // Inline sub-components that need T
   const CrossIcon=({size=16,color})=><svg width={size} height={size} viewBox="0 0 24 28" fill="none" stroke={color||T.gold} strokeWidth="1.5"><line x1="12" y1="1" x2="12" y2="27"/><line x1="4" y1="9" x2="20" y2="9"/></svg>;
-  
-  const Carousel=({children})=>{
-    const sr=useRef(null);const[cl,setCl]=useState(false);const[cr,setCr]=useState(true);
-    const check=()=>{const e=sr.current;if(!e)return;setCl(e.scrollLeft>10);setCr(e.scrollLeft<e.scrollWidth-e.clientWidth-10)};
-    useEffect(()=>{check()},[]);
-    return <div style={{position:"relative"}}>
-      {cl&&<div style={{position:"absolute",left:0,top:0,bottom:0,width:40,background:`linear-gradient(to right, ${T.bg}, transparent)`,zIndex:5,pointerEvents:"none"}}/>}
-      {cr&&<div style={{position:"absolute",right:0,top:0,bottom:0,width:40,background:`linear-gradient(to left, ${T.bg}, transparent)`,zIndex:5,pointerEvents:"none"}}/>}
-      {cl&&<button onClick={()=>sr.current?.scrollBy({left:-280,behavior:"smooth"})} style={{position:"absolute",left:4,top:"50%",transform:"translateY(-50%)",zIndex:10,width:32,height:32,borderRadius:"50%",background:`${T.gold}15`,border:`1px solid ${T.gold}30`,color:T.gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>←</button>}
-      {cr&&<button onClick={()=>sr.current?.scrollBy({left:280,behavior:"smooth"})} style={{position:"absolute",right:4,top:"50%",transform:"translateY(-50%)",zIndex:10,width:32,height:32,borderRadius:"50%",background:`${T.gold}15`,border:`1px solid ${T.gold}30`,color:T.gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>→</button>}
-      <div ref={sr} onScroll={check} style={{display:"flex",gap:14,overflowX:"auto",scrollSnapType:"x mandatory",WebkitOverflowScrolling:"touch",scrollbarWidth:"none",msOverflowStyle:"none",padding:"4px 2px 12px"}}>{children}</div>
-    </div>;
-  };
 
   return(
     <>
@@ -228,7 +216,7 @@ export default function BabakizoV5Final(){
           </div>
           {contentItems.length>0&&<div style={{marginBottom:40,opacity:workIn?1:0,transform:workIn?"translateY(0)":"translateY(20px)",transition:"all 0.6s ease 0.2s"}}>
             <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16}}><div style={{width:20,height:1,background:`linear-gradient(to right, ${T.gold}, transparent)`}}/><span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:9,color:T.gold,letterSpacing:3,textTransform:"uppercase",fontWeight:600}}>Latest Drops</span></div>
-            <Carousel>{contentItems.map(c=><div key={c.title} style={{minWidth:250,maxWidth:250,scrollSnapAlign:"start",background:T.card,border:`1px solid ${T.border}`,borderRadius:14,padding:"22px 20px",flexShrink:0}}>
+            <Carousel bg={T.bg} gold={T.gold}>{contentItems.map(c=><div key={c.title} style={{minWidth:250,maxWidth:250,scrollSnapAlign:"start",background:T.card,border:`1px solid ${T.border}`,borderRadius:14,padding:"22px 20px",flexShrink:0}}>
               <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}><span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,fontWeight:700,color:c.color,letterSpacing:2,textTransform:"uppercase",padding:"2px 8px",background:`${c.color}10`,borderRadius:4}}>{c.type}</span><span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,color:T.gray,letterSpacing:1}}>{c.platform}</span></div>
               <h4 style={{fontFamily:"'Cormorant Garamond', serif",fontSize:16,fontWeight:700,color:T.text,margin:"0 0 8px",lineHeight:1.3}}>{c.title}</h4>
               <p style={{fontFamily:"'DM Sans'",fontSize:11,color:T.gray,lineHeight:1.6,margin:0}}>{c.desc}</p>
@@ -236,7 +224,7 @@ export default function BabakizoV5Final(){
           </div>}
           <div style={{opacity:workIn?1:0,transform:workIn?"translateY(0)":"translateY(20px)",transition:"all 0.6s ease 0.2s"}}>
             <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16}}><div style={{width:20,height:1,background:`linear-gradient(to right, ${T.gold}, transparent)`}}/><span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:9,color:T.gold,letterSpacing:3,textTransform:"uppercase",fontWeight:600}}>Shipped</span></div>
-            <Carousel>{projects.map(p=>{const[h,setH]=useState(false);return <div key={p.name} onMouseEnter={()=>setH(true)} onMouseLeave={()=>setH(false)} style={{minWidth:270,maxWidth:270,scrollSnapAlign:"start",background:T.card,border:`1px solid ${h?p.accent:T.border}`,borderRadius:14,padding:"24px 20px",flexShrink:0,transition:"border-color 0.3s",cursor:"default"}}>
+            <Carousel bg={T.bg} gold={T.gold}>{projects.map(p=>{const[h,setH]=useState(false);return <div key={p.name} onMouseEnter={()=>setH(true)} onMouseLeave={()=>setH(false)} style={{minWidth:270,maxWidth:270,scrollSnapAlign:"start",background:T.card,border:`1px solid ${h?p.accent:T.border}`,borderRadius:14,padding:"24px 20px",flexShrink:0,transition:"border-color 0.3s",cursor:"default"}}>
               <div style={{width:h?50:28,height:3,borderRadius:2,backgroundColor:p.accent,marginBottom:16,transition:"width 0.3s ease"}}/>
               <h4 style={{fontFamily:"'Cormorant Garamond', serif",fontSize:18,fontWeight:700,color:T.text,margin:"0 0 8px"}}>{p.name}</h4>
               <p style={{fontFamily:"'DM Sans'",fontSize:11,color:T.gray,lineHeight:1.6,margin:"0 0 14px"}}>{p.desc}</p>
