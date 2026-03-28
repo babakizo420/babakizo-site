@@ -28,12 +28,12 @@ const divisions=[
 ];
 const journey=[{phase:"NOW",label:"The Foundation"},{phase:"Q2/Q3",label:"First Revenue"},{phase:"Q4+",label:"Systems Running"},{phase:"VISION",label:"Remote Operator"}];
 const socials=[
-  {name:"YouTube",type:"youtube",url:"#",color:"#FF0000",handle:"Vlogs, builds, monthly reports"},
-  {name:"X (Twitter)",type:"x",url:"#",color:"#888",handle:"Threads, intel drops, daily logs"},
-  {name:"Instagram",type:"instagram",url:"#",color:"#E1306C",handle:"Reels, carousels, BTS"},
-  {name:"LinkedIn",type:"linkedin",url:"#",color:"#0A66C2",handle:"Professional narrative"},
-  {name:"TikTok",type:"tiktok",url:"#",color:"#00C8C8",handle:"Short-form, discipline"},
-  {name:"Snapchat",type:"snapchat",url:"#",color:"#CCCC00",handle:"Day-in-the-life, raw"},
+  {name:"YouTube",type:"youtube",url:"https://youtube.com/@babakizo1?si=eAgJFOS8qCu0wIcR",color:"#FF0000",handle:"Vlogs, builds, monthly reports"},
+  {name:"X (Twitter)",type:"x",url:"https://x.com/_babakizo?s=21",color:"#888",handle:"Threads, intel drops, daily logs"},
+  {name:"Instagram",type:"instagram",url:"https://www.instagram.com/_babakizo?igsh=MWUwb2c4ZWM3anM0cw%3D%3D&utm_source=qr",color:"#E1306C",handle:"Reels, carousels, BTS"},
+  {name:"LinkedIn",type:"linkedin",url:"https://www.linkedin.com/in/kingsley-olukanni-572420196?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",color:"#0A66C2",handle:"Professional narrative"},
+  {name:"TikTok",type:"tiktok",url:"https://www.tiktok.com/@_babakizo?_r=1&_t=ZS-954XJXdRYJk",color:"#00C8C8",handle:"Short-form, discipline"},
+  {name:"Snapchat",type:"snapchat",url:"https://snapchat.com/t/vmQWYqUY",color:"#CCCC00",handle:"Day-in-the-life, raw"},
   {name:"GitHub",type:"github",url:"#",color:"#999",handle:"Code, repos, build logs"},
   {name:"Gumroad",type:"gumroad",url:"#",color:"#FF90E8",handle:"Templates, digital products"},
 ];
