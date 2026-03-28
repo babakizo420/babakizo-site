@@ -34,7 +34,7 @@ const socials=[
   {name:"LinkedIn",type:"linkedin",url:"https://www.linkedin.com/in/kingsley-olukanni-572420196?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",color:"#0A66C2",handle:"Professional narrative"},
   {name:"TikTok",type:"tiktok",url:"https://www.tiktok.com/@_babakizo?_r=1&_t=ZS-954XJXdRYJk",color:"#00C8C8",handle:"Short-form, discipline"},
   {name:"Snapchat",type:"snapchat",url:"https://snapchat.com/t/vmQWYqUY",color:"#CCCC00",handle:"Day-in-the-life, raw"},
-  {name:"GitHub",type:"github",url:"#",color:"#999",handle:"Code, repos, build logs"},
+  {name:"GitHub",type:"github",url:"https://github.com/babakizo420",color:"#999",handle:"Code, repos, build logs"},
   {name:"Gumroad",type:"gumroad",url:"#",color:"#FF90E8",handle:"Templates, digital products"},
 ];
 const contentItems=[];
