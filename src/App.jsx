@@ -102,10 +102,10 @@ export default function BabakizoV5Final(){
         {/* NAV */}
         <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:100,padding:"12px 20px",background:T.navBg,backdropFilter:"blur(20px)",borderBottom:`1px solid ${scrollY>50?T.border:"transparent"}`,transition:"all 0.4s"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-            <div style={{display:"flex",alignItems:"center",gap:7}}>
+            <button onClick={()=>window.scrollTo({top:0,behavior:"smooth"})} style={{display:"flex",alignItems:"center",gap:7,background:"none",border:"none",cursor:"pointer",padding:0}}>
               <CrossIcon size={13}/>
               <span style={{fontFamily:"'Cormorant Garamond', serif",fontSize:15,fontWeight:700,color:T.text,letterSpacing:2}}>BABAKIZO</span>
-            </div>
+            </button>
             <div style={{display:"flex",alignItems:"center",gap:8}}>
               <button onClick={()=>setDark(!dark)} style={{width:36,height:36,borderRadius:"50%",background:`${T.gold}12`,border:`1px solid ${T.gold}30`,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",transition:"all 0.3s"}}>
                 {dark?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={T.gold} strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -126,6 +126,9 @@ export default function BabakizoV5Final(){
             </div>
           </div>
         </nav>
+
+        {/* BACK TO TOP */}
+        {scrollY>400&&<button onClick={()=>window.scrollTo({top:0,behavior:"smooth"})} style={{position:"fixed",bottom:24,right:20,zIndex:90,width:40,height:40,borderRadius:"50%",background:T.card,border:`1px solid ${T.gold}40`,color:T.gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",boxShadow:`0 4px 20px rgba(0,0,0,0.3)`,transition:"all 0.3s"}} onMouseEnter={e=>{e.currentTarget.style.background=T.gold;e.currentTarget.style.color=dark?"#050505":"#fff"}} onMouseLeave={e=>{e.currentTarget.style.background=T.card;e.currentTarget.style.color=T.gold}}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>}
 
         {/* HERO */}
         <section style={{minHeight:"100vh",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",position:"relative",padding:"130px 24px 70px",textAlign:"center",overflow:"hidden"}}>
