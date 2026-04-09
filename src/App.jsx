@@ -38,13 +38,20 @@ const socials=[
   {name:"GitHub",type:"github",url:"https://github.com/babakizo420",color:"#999",handle:"Code, repos, build logs"},
   {name:"Gumroad",type:"gumroad",url:"https://utilityvault.gumroad.com",color:"#FF90E8",handle:"Templates, digital products"},
 ];
-const contentItems=[];
+const contentItems=[
+  {title:"₦60K Website Breakdown",type:"carousel",desc:"What each Pejji tier includes - from Card to Pro Max",link:"https://instagram.com/pejji.ng",accent:"#4ECDC4"},
+  {title:"Sterling Bank Breach",type:"analysis",desc:"NDPC investigating 900K accounts, 3000+ employee records exposed",link:"https://securva.net",accent:"#7B68EE"},
+  {title:"NDPA Compliance Guide",type:"blog",desc:"What Nigerian businesses need to stay compliant in 2026",link:"https://pejji.com/blog/ndpa-compliance-nigerian-businesses",accent:"#FF6B6B"},
+  {title:"4:30AM CEO Morning",type:"lifestyle",desc:"The routine behind the hustle - wake, run, build, ship",link:"https://instagram.com/_babakizo",accent:"#D4A843"},
+  {title:"Nigerian Infra Mapping",type:"research",desc:"Mapping Nigeria's internet infrastructure - nobody else is doing this",link:"https://securva.net",accent:"#7B68EE"},
+  {title:"Web Design Pricing",type:"blog",desc:"How much does a website cost in Nigeria? The honest breakdown",link:"https://pejji.com/blog/how-much-does-website-cost-nigeria",accent:"#FFB347"},
+];
 const projects=[
   {name:"babakizo.com",desc:"Personal brand HQ with animated mesh, scroll reveals, 3D elements.",tech:["React","Three.js"],status:"Live",accent:"#D4A843"},
-  {name:"BlessedOps Group",desc:"Holding company site connecting all four divisions.",tech:["React","Next.js"],status:"Building",accent:"#4ECDC4"},
-  {name:"Pejji Template System",desc:"Reusable web templates for Nigerian SMEs. Mobile-first.",tech:["React","Tailwind"],status:"Building",accent:"#7B68EE"},
-  {name:"Securva Dashboard",desc:"Threat monitoring MVP. Real-time alerts, clean data viz.",tech:["React","D3"],status:"Designing",accent:"#FF6B6B"},
-  {name:"Utility Vault SOP Pack",desc:"First digital product. Business SOPs on Gumroad.",tech:["Notion","Gumroad"],status:"Building",accent:"#FFB347"},
+  {name:"BlessedOps Group",desc:"Holding company hub connecting Pejji, Securva, Utility Vault, CyberArmor.",tech:["React"],status:"Live",accent:"#4ECDC4"},
+  {name:"Pejji Web Agency",desc:"8 demo sites, CI/CD pipeline, NDPA compliance. Serving Nigerian SMEs.",tech:["Astro","Cloudflare"],status:"Live",accent:"#7B68EE"},
+  {name:"Securva Scanner",desc:"Automated security scanning + NDPA compliance reports for African businesses.",tech:["Claude AI","Python"],status:"Building",accent:"#FF6B6B"},
+  {name:"Security Dashboard",desc:"Live portfolio dashboard showcasing open source security tools.",tech:["React","GitHub Pages"],status:"Live",accent:"#FFB347"},
   {name:"YT Intro Animation",desc:"3D cross-shield emblem with cinematic particle effects.",tech:["Three.js","Canvas"],status:"Complete",accent:"#D4A843"},
 ];
 
@@ -275,6 +282,13 @@ export default function BabakizoV5Final(){
           <p style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,color:T.gray,letterSpacing:2,opacity:0.6}}>© {new Date().getFullYear()} BABAKIZO // BLESSEDOPS GROUP</p>
         </footer>
       </div>
+      {/* NDPA Cookie Consent */}
+      {!localStorage.getItem("cookie-consent")&&<div style={{position:"fixed",bottom:0,left:0,right:0,zIndex:200,background:dark?"rgba(10,10,10,0.97)":"rgba(250,248,244,0.97)",borderTop:`1px solid ${T.border}`,padding:"16px 24px",backdropFilter:"blur(10px)"}}>
+        <div style={{maxWidth:600,margin:"0 auto",display:"flex",flexWrap:"wrap",alignItems:"center",justifyContent:"space-between",gap:12}}>
+          <p style={{color:T.gray,fontSize:13,margin:0,flex:1,minWidth:200}}>We use cookies to improve your experience. By continuing, you consent to our use of cookies in accordance with the Nigeria Data Protection Act (NDPA) 2023.</p>
+          <button onClick={()=>{localStorage.setItem("cookie-consent","accepted");window.location.reload()}} style={{background:T.gold,color:dark?"#050505":"#FFFFFF",fontSize:13,fontWeight:600,padding:"8px 24px",borderRadius:20,border:"none",cursor:"pointer"}}>Accept</button>
+        </div>
+      </div>}
     </>
   );
 }
