@@ -39,11 +39,9 @@ const socials=[
   {name:"Gumroad",type:"gumroad",url:"https://utilityvault.gumroad.com",color:"#FF90E8",handle:"Templates, digital products"},
 ];
 const contentItems=[
-  {title:"₦60K Website Breakdown",type:"carousel",desc:"What each Pejji tier includes - from Card to Pro Max",link:"https://instagram.com/pejji.ng",accent:"#4ECDC4"},
+  {title:"₦60K Website Breakdown",type:"carousel",desc:"What each Pejji tier includes - from Card to Pro Max",link:"https://pejji.com/services",accent:"#4ECDC4"},
   {title:"Sterling Bank Breach",type:"analysis",desc:"NDPC investigating 900K accounts, 3000+ employee records exposed",link:"https://securva.net",accent:"#7B68EE"},
   {title:"NDPA Compliance Guide",type:"blog",desc:"What Nigerian businesses need to stay compliant in 2026",link:"https://pejji.com/blog/ndpa-compliance-nigerian-businesses",accent:"#FF6B6B"},
-  {title:"4:30AM CEO Morning",type:"lifestyle",desc:"The routine behind the hustle - wake, run, build, ship",link:"https://instagram.com/_babakizo",accent:"#D4A843"},
-  {title:"Nigerian Infra Mapping",type:"research",desc:"Mapping Nigeria's internet infrastructure - nobody else is doing this",link:"https://securva.net",accent:"#7B68EE"},
   {title:"Web Design Pricing",type:"blog",desc:"How much does a website cost in Nigeria? The honest breakdown",link:"https://pejji.com/blog/how-much-does-website-cost-nigeria",accent:"#FFB347"},
 ];
 const projects=[
@@ -229,11 +227,11 @@ export default function BabakizoV5Final(){
           </div>
           {contentItems.length>0&&<div style={{marginBottom:40,opacity:workIn?1:0,transform:workIn?"translateY(0)":"translateY(20px)",transition:"all 0.6s ease 0.2s"}}>
             <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16}}><div style={{width:20,height:1,background:`linear-gradient(to right, ${T.gold}, transparent)`}}/><span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:9,color:T.gold,letterSpacing:3,textTransform:"uppercase",fontWeight:600}}>Latest Drops</span></div>
-            <Carousel bg={T.bg} gold={T.gold}>{contentItems.map(c=><div key={c.title} style={{minWidth:250,maxWidth:250,scrollSnapAlign:"start",background:T.card,border:`1px solid ${T.border}`,borderRadius:14,padding:"22px 20px",flexShrink:0}}>
-              <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}><span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,fontWeight:700,color:c.color,letterSpacing:2,textTransform:"uppercase",padding:"2px 8px",background:`${c.color}10`,borderRadius:4}}>{c.type}</span><span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,color:T.gray,letterSpacing:1}}>{c.platform}</span></div>
+            <Carousel bg={T.bg} gold={T.gold}>{contentItems.map(c=><a key={c.title} href={c.link} target="_blank" rel="noopener noreferrer" style={{minWidth:250,maxWidth:250,scrollSnapAlign:"start",background:T.card,border:`1px solid ${T.border}`,borderRadius:14,padding:"22px 20px",flexShrink:0,textDecoration:"none",display:"block",transition:"border-color 0.3s"}} onMouseEnter={e=>e.currentTarget.style.borderColor=c.accent} onMouseLeave={e=>e.currentTarget.style.borderColor=T.border}>
+              <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}><span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,fontWeight:700,color:c.accent,letterSpacing:2,textTransform:"uppercase",padding:"2px 8px",background:`${c.accent}15`,borderRadius:4}}>{c.type}</span></div>
               <h4 style={{fontFamily:"'Cormorant Garamond', serif",fontSize:16,fontWeight:700,color:T.text,margin:"0 0 8px",lineHeight:1.3}}>{c.title}</h4>
               <p style={{fontFamily:"'DM Sans'",fontSize:11,color:T.gray,lineHeight:1.6,margin:0}}>{c.desc}</p>
-            </div>)}</Carousel>
+            </a>)}</Carousel>
           </div>}
           <div style={{opacity:workIn?1:0,transform:workIn?"translateY(0)":"translateY(20px)",transition:"all 0.6s ease 0.2s"}}>
             <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:16}}><div style={{width:20,height:1,background:`linear-gradient(to right, ${T.gold}, transparent)`}}/><span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:9,color:T.gold,letterSpacing:3,textTransform:"uppercase",fontWeight:600}}>Shipped</span></div>
