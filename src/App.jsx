@@ -22,11 +22,22 @@ function useCountUp(target,dur=1600,start=false){const[v,setV]=useState(0);useEf
 function Carousel({children,bg,gold}){const sr=useRef(null);const[cl,setCl]=useState(false);const[cr,setCr]=useState(true);const check=()=>{const e=sr.current;if(!e)return;setCl(e.scrollLeft>10);setCr(e.scrollLeft<e.scrollWidth-e.clientWidth-10)};useEffect(()=>{const e=sr.current;check();if(e){e.addEventListener('scroll',check,{passive:true});return()=>e.removeEventListener('scroll',check)}},[]);return <div style={{position:"relative"}}>{cl&&<div style={{position:"absolute",left:0,top:0,bottom:0,width:40,background:`linear-gradient(to right, ${bg}, transparent)`,zIndex:5,pointerEvents:"none"}}/>}{cr&&<div style={{position:"absolute",right:0,top:0,bottom:0,width:40,background:`linear-gradient(to left, ${bg}, transparent)`,zIndex:5,pointerEvents:"none"}}/>}{cl&&<button onClick={()=>sr.current?.scrollBy({left:-280,behavior:"smooth"})} style={{position:"absolute",left:4,top:"50%",transform:"translateY(-50%)",zIndex:10,width:32,height:32,borderRadius:"50%",background:`${gold}15`,border:`1px solid ${gold}30`,color:gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>←</button>}{cr&&<button onClick={()=>sr.current?.scrollBy({left:280,behavior:"smooth"})} style={{position:"absolute",right:4,top:"50%",transform:"translateY(-50%)",zIndex:10,width:32,height:32,borderRadius:"50%",background:`${gold}15`,border:`1px solid ${gold}30`,color:gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>→</button>}<div ref={sr} style={{display:"flex",gap:14,overflowX:"auto",scrollSnapType:"x mandatory",WebkitOverflowScrolling:"touch",scrollbarWidth:"none",msOverflowStyle:"none",padding:"4px 2px 12px"}}>{children}</div></div>}
 
 const divisions=[
-  {name:"Pejji",tag:"Web Agency",desc:"Security-first websites for Nigerian SMEs. Starting from ₦60,000.",icon:"🌍",accent:"#4ECDC4",url:"https://pejji.com"},
-  {name:"Securva",tag:"Cybersecurity SaaS",desc:"Automated security scanning & NDPA compliance for African businesses.",icon:"🛡️",accent:"#7B68EE",url:"https://securva.net"},
-  {name:"Utility Vault",tag:"Digital Products",desc:"Templates, SOPs, and tools. Systems packaged for builders who move fast.",icon:"⚡",accent:"#FFB347",url:"https://utilityvault.gumroad.com"},
-  {name:"CyberArmor",tag:"Web3 Security",desc:"Smart contract audits, DeFi breakdowns, and Web3 threat intelligence.",icon:"🔐",accent:"#FF6B6B",url:null},
+  {name:"Pejji",tag:"Web Agency",desc:"Security-first websites for Nigerian SMEs. Starting from ₦60,000.",icon:"globe",accent:"#4ECDC4",url:"https://pejji.com"},
+  {name:"Securva",tag:"Cybersecurity SaaS",desc:"Automated security scanning & NDPA compliance for African businesses.",icon:"shield",accent:"#7B68EE",url:"https://securva.net"},
+  {name:"Utility Vault",tag:"Digital Products",desc:"Templates, SOPs, and tools. Systems packaged for builders who move fast.",icon:"bolt",accent:"#FFB347",url:"https://utilityvault.gumroad.com"},
+  {name:"CyberArmor",tag:"Web3 Security",desc:"Smart contract audits, DeFi breakdowns, and Web3 threat intelligence.",icon:"lock",accent:"#FF6B6B",url:null},
 ];
+
+// SVG icons for division cards (replaces emojis that render as tofu boxes
+// on some browsers / systems). Size + color controlled by parent.
+function DivisionIcon({type,size=32,color}){
+  const stroke={stroke:color||"currentColor",strokeWidth:"1.75",strokeLinecap:"round",strokeLinejoin:"round",fill:"none"};
+  if(type==="globe")return <svg width={size} height={size} viewBox="0 0 24 24" {...stroke}><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>;
+  if(type==="shield")return <svg width={size} height={size} viewBox="0 0 24 24" {...stroke}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>;
+  if(type==="bolt")return <svg width={size} height={size} viewBox="0 0 24 24" {...stroke}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>;
+  if(type==="lock")return <svg width={size} height={size} viewBox="0 0 24 24" {...stroke}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>;
+  return null;
+}
 const journey=[{phase:"NOW",label:"The Foundation"},{phase:"Q2/Q3",label:"First Revenue"},{phase:"Q4+",label:"Systems Running"},{phase:"VISION",label:"Remote Operator"}];
 const socials=[
   {name:"YouTube",type:"youtube",url:"https://youtube.com/@babakizo1?si=eAgJFOS8qCu0wIcR",color:"#FF0000",handle:"Vlogs, builds, monthly reports"},
@@ -206,7 +217,7 @@ export default function BabakizoV5Final(){
                 <CardTag {...linkProps} ref={ref} onMouseEnter={()=>setH(true)} onMouseLeave={()=>setH(false)} style={{position:"relative",background:T.card,border:`1px solid ${h?d.accent:T.border}`,borderRadius:18,padding:"28px 22px 24px",overflow:"hidden",opacity:inV?1:0,transform:inV?"translateY(0)":"translateY(36px)",transition:`all 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${i*0.1}s`,cursor:d.url?"pointer":"default",textDecoration:"none",display:"block"}}>
                   {glow.active&&<div style={{position:"absolute",left:glow.x-80,top:glow.y-80,width:160,height:160,borderRadius:"50%",background:`radial-gradient(circle, ${d.accent}12, transparent 70%)`,pointerEvents:"none"}}/>}
                   <div style={{position:"absolute",top:0,left:"10%",width:h?"80%":"0%",height:2,background:`linear-gradient(90deg, transparent, ${d.accent}, transparent)`,transition:"width 0.5s ease"}}/>
-                  <div style={{fontSize:32,marginBottom:14,transform:h?"scale(1.1)":"scale(1)",transition:"transform 0.3s ease"}}>{d.icon}</div>
+                  <div style={{marginBottom:14,transform:h?"scale(1.1)":"scale(1)",transition:"transform 0.3s ease",color:d.accent,display:"flex"}}><DivisionIcon type={d.icon} size={32} color={d.accent}/></div>
                   <h3 style={{fontFamily:"'Cormorant Garamond', serif",fontSize:22,fontWeight:700,color:T.text,margin:"0 0 4px"}}>{d.name}</h3>
                   <p style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:9,fontWeight:600,color:d.accent,letterSpacing:2.5,textTransform:"uppercase",margin:"0 0 12px"}}>{d.tag}</p>
                   <p style={{fontFamily:"'DM Sans', sans-serif",fontSize:13,color:T.gray,lineHeight:1.65,margin:0}}>{d.desc}</p>
