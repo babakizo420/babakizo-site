@@ -22,8 +22,8 @@ function useCountUp(target,dur=1600,start=false){const[v,setV]=useState(0);useEf
 function Carousel({children,bg,gold}){const sr=useRef(null);const[cl,setCl]=useState(false);const[cr,setCr]=useState(true);const check=()=>{const e=sr.current;if(!e)return;setCl(e.scrollLeft>10);setCr(e.scrollLeft<e.scrollWidth-e.clientWidth-10)};useEffect(()=>{const e=sr.current;check();if(e){e.addEventListener('scroll',check,{passive:true});return()=>e.removeEventListener('scroll',check)}},[]);return <div style={{position:"relative"}}>{cl&&<div style={{position:"absolute",left:0,top:0,bottom:0,width:40,background:`linear-gradient(to right, ${bg}, transparent)`,zIndex:5,pointerEvents:"none"}}/>}{cr&&<div style={{position:"absolute",right:0,top:0,bottom:0,width:40,background:`linear-gradient(to left, ${bg}, transparent)`,zIndex:5,pointerEvents:"none"}}/>}{cl&&<button onClick={()=>sr.current?.scrollBy({left:-280,behavior:"smooth"})} style={{position:"absolute",left:4,top:"50%",transform:"translateY(-50%)",zIndex:10,width:32,height:32,borderRadius:"50%",background:`${gold}15`,border:`1px solid ${gold}30`,color:gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>←</button>}{cr&&<button onClick={()=>sr.current?.scrollBy({left:280,behavior:"smooth"})} style={{position:"absolute",right:4,top:"50%",transform:"translateY(-50%)",zIndex:10,width:32,height:32,borderRadius:"50%",background:`${gold}15`,border:`1px solid ${gold}30`,color:gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>→</button>}<div ref={sr} style={{display:"flex",gap:14,overflowX:"auto",scrollSnapType:"x mandatory",WebkitOverflowScrolling:"touch",scrollbarWidth:"none",msOverflowStyle:"none",padding:"4px 2px 12px"}}>{children}</div></div>}
 
 const divisions=[
-  {name:"Pejji",tag:"Web Agency",desc:"Security-first websites for Nigerian SMEs. Starting from ₦60,000.",icon:"globe",accent:"#4ECDC4",url:"https://pejji.com"},
-  {name:"Securva",tag:"Cybersecurity SaaS",desc:"Automated security scanning & NDPA compliance for African businesses.",icon:"shield",accent:"#7B68EE",url:"https://securva.net"},
+  {name:"Pejji",tag:"Web Agency",desc:"Security-first websites for Nigerian SMEs. Starting from $40 USD (₦60,000). Paystack live, NDPA compliant from day 1.",icon:"globe",accent:"#4ECDC4",url:"https://pejji.com"},
+  {name:"Securva",tag:"Cybersecurity SaaS",desc:"Continuous recon engine (ARGUS) + audit Skills + methodology stack. Stack-agnostic across web2 + web3. Live dashboard at argus.babakizo.com.",icon:"shield",accent:"#7B68EE",url:"https://securva.net"},
   {name:"Utility Vault",tag:"Digital Products",desc:"Templates, SOPs, and tools. Systems packaged for builders who move fast.",icon:"bolt",accent:"#FFB347",url:"https://utilityvault.gumroad.com"},
   {name:"CyberArmor",tag:"Web3 Security",desc:"Smart contract audits, DeFi breakdowns, and Web3 threat intelligence.",icon:"lock",accent:"#FF6B6B",url:null},
 ];
@@ -50,16 +50,19 @@ const socials=[
   {name:"Gumroad",type:"gumroad",url:"https://utilityvault.gumroad.com",color:"#FF90E8",handle:"Templates, digital products"},
 ];
 const contentItems=[
-  {title:"₦60K Website Breakdown",type:"carousel",desc:"What each Pejji tier includes - from Card to Pro Max",link:"https://pejji.com/services",accent:"#4ECDC4"},
-  {title:"Sterling Bank Breach",type:"analysis",desc:"NDPC investigating 900K accounts, 3000+ employee records exposed",link:"https://securva.net",accent:"#7B68EE"},
-  {title:"NDPA Compliance Guide",type:"blog",desc:"What Nigerian businesses need to stay compliant in 2026",link:"https://pejji.com/blog/ndpa-compliance-nigerian-businesses",accent:"#FF6B6B"},
+  {title:"ARGUS Recon Engine",type:"build",desc:"8 EYES + Brain + Mouth + supports. 14 components live. Continuous bug-bounty intel.",link:"https://argus.babakizo.com",accent:"#7B68EE"},
+  {title:"$40 USD / ₦60K Website Breakdown",type:"carousel",desc:"What each Pejji tier includes - from Card to Pro Max",link:"https://pejji.com/services",accent:"#4ECDC4"},
+  {title:"Sterling Bank Breach",type:"analysis",desc:"NDPC investigating 900K accounts, 3000+ employee records exposed",link:"https://securva.net",accent:"#FF6B6B"},
+  {title:"NDPA Compliance Guide",type:"blog",desc:"What Nigerian businesses need to stay compliant in 2026",link:"https://pejji.com/blog/ndpa-compliance-nigerian-businesses",accent:"#D4A843"},
   {title:"Web Design Pricing",type:"blog",desc:"How much does a website cost in Nigeria? The honest breakdown",link:"https://pejji.com/blog/how-much-does-website-cost-nigeria",accent:"#FFB347"},
 ];
 const projects=[
-  {name:"babakizo.com",desc:"Personal brand HQ with animated mesh, scroll reveals, 3D elements.",tech:["React","Three.js"],status:"Live",accent:"#D4A843"},
+  {name:"ARGUS Recon Engine",desc:"Continuous bug-bounty intel. 8 EYES + Brain v1 + Mouth v0 + supports. Live dashboard at argus.babakizo.com.",tech:["Python","SQLite","Cloudflare Pages"],status:"Live",accent:"#7B68EE"},
+  {name:"Securva Methodology Stack",desc:"Audit Skills + 39 banked rules + 5 sub-rules. Stack-agnostic across web2 + web3, validated on multiple protocols.",tech:["Claude","Python","Methodology"],status:"Live",accent:"#FF6B6B"},
+  {name:"Snapshot Pro PDF",desc:"Automated security snapshot + NDPA compliance report. 10-section PDF intake pipeline.",tech:["Claude","Cloudflare Workers","R2"],status:"Live",accent:"#D4A843"},
   {name:"BlessedOps Group",desc:"Holding company hub connecting Pejji, Securva, Utility Vault, CyberArmor.",tech:["React"],status:"Live",accent:"#4ECDC4"},
-  {name:"Pejji Web Agency",desc:"8 demo sites, CI/CD pipeline, NDPA compliance. Serving Nigerian SMEs.",tech:["Astro","Cloudflare"],status:"Live",accent:"#7B68EE"},
-  {name:"Securva Scanner",desc:"Automated security scanning + NDPA compliance reports for African businesses.",tech:["Claude AI","Python"],status:"Building",accent:"#FF6B6B"},
+  {name:"Pejji Web Agency",desc:"Demo sites, CI/CD pipeline, NDPA compliance. Paystack rail live. Serving Nigerian SMEs.",tech:["Astro","Cloudflare","Paystack"],status:"Live",accent:"#7B68EE"},
+  {name:"babakizo.com",desc:"Personal brand HQ with animated mesh, scroll reveals, 3D elements.",tech:["React","Three.js"],status:"Live",accent:"#D4A843"},
   {name:"Security Dashboard",desc:"Live portfolio dashboard showcasing open source security tools.",tech:["React","GitHub Pages"],status:"Live",accent:"#FFB347"},
   {name:"YT Intro Animation",desc:"3D cross-shield emblem with cinematic particle effects.",tech:["Three.js","Canvas"],status:"Complete",accent:"#D4A843"},
 ];
