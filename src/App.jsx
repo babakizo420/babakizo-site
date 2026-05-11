@@ -23,7 +23,7 @@ function Carousel({children,bg,gold}){const sr=useRef(null);const[cl,setCl]=useS
 
 const divisions=[
   {name:"Pejji",tag:"Web Agency",desc:"Security-first websites for Nigerian SMEs. Starting from $40 USD (₦60,000). Paystack live, NDPA compliant from day 1.",icon:"globe",accent:"#4ECDC4",url:"https://pejji.com"},
-  {name:"Securva",tag:"Cybersecurity SaaS",desc:"Continuous recon engine (ARGUS) + audit Skills + methodology stack. Stack-agnostic across web2 + web3. Live dashboard at argus.babakizo.com.",icon:"shield",accent:"#7B68EE",url:"https://securva.net"},
+  {name:"Securva",tag:"Cybersecurity SaaS",desc:"Snapshot Pro PDFs + NDPA compliance reports + audit Skills. Methodology proven stack-agnostic across web2 + web3.",icon:"shield",accent:"#7B68EE",url:"https://securva.net"},
   {name:"Utility Vault",tag:"Digital Products",desc:"Templates, SOPs, and tools. Systems packaged for builders who move fast.",icon:"bolt",accent:"#FFB347",url:"https://utilityvault.gumroad.com"},
   {name:"CyberArmor",tag:"Web3 Security",desc:"Smart contract audits, DeFi breakdowns, and Web3 threat intelligence.",icon:"lock",accent:"#FF6B6B",url:null},
 ];
@@ -50,14 +50,14 @@ const socials=[
   {name:"Gumroad",type:"gumroad",url:"https://utilityvault.gumroad.com",color:"#FF90E8",handle:"Templates, digital products"},
 ];
 const contentItems=[
-  {title:"ARGUS Recon Engine",type:"build",desc:"8 EYES + Brain + Mouth + supports. 14 components live. Continuous bug-bounty intel.",link:"https://argus.babakizo.com",accent:"#7B68EE"},
+  {title:"ARGUS Build Log",type:"build",desc:"Personal recon engine in active build. 8 EYES + Brain + Mouth + supports running on box.",link:"https://argus.babakizo.com",accent:"#D4A843"},
   {title:"$40 USD / ₦60K Website Breakdown",type:"carousel",desc:"What each Pejji tier includes - from Card to Pro Max",link:"https://pejji.com/services",accent:"#4ECDC4"},
   {title:"Sterling Bank Breach",type:"analysis",desc:"NDPC investigating 900K accounts, 3000+ employee records exposed",link:"https://securva.net",accent:"#FF6B6B"},
   {title:"NDPA Compliance Guide",type:"blog",desc:"What Nigerian businesses need to stay compliant in 2026",link:"https://pejji.com/blog/ndpa-compliance-nigerian-businesses",accent:"#D4A843"},
   {title:"Web Design Pricing",type:"blog",desc:"How much does a website cost in Nigeria? The honest breakdown",link:"https://pejji.com/blog/how-much-does-website-cost-nigeria",accent:"#FFB347"},
 ];
 const projects=[
-  {name:"ARGUS Recon Engine",desc:"Continuous bug-bounty intel. 8 EYES + Brain v1 + Mouth v0 + supports. Live dashboard at argus.babakizo.com.",tech:["Python","SQLite","Cloudflare Pages"],status:"Live",accent:"#7B68EE"},
+  {name:"ARGUS",desc:"Personal continuous-recon engine in active build. 8 EYES + Brain + Mouth + supports running 24/7 on box. Build log at argus.babakizo.com.",tech:["Python","SQLite","Cloudflare Pages"],status:"Building",accent:"#D4A843"},
   {name:"Securva Methodology Stack",desc:"Audit Skills + 39 banked rules + 5 sub-rules. Stack-agnostic across web2 + web3, validated on multiple protocols.",tech:["Claude","Python","Methodology"],status:"Live",accent:"#FF6B6B"},
   {name:"Snapshot Pro PDF",desc:"Automated security snapshot + NDPA compliance report. 10-section PDF intake pipeline.",tech:["Claude","Cloudflare Workers","R2"],status:"Live",accent:"#D4A843"},
   {name:"BlessedOps Group",desc:"Holding company hub connecting Pejji, Securva, Utility Vault, CyberArmor.",tech:["React"],status:"Live",accent:"#4ECDC4"},
