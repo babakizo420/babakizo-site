@@ -40,11 +40,11 @@ function DivisionIcon({type,size=32,color}){
 }
 const journey=[{phase:"NOW",label:"The Foundation"},{phase:"Q2/Q3",label:"First Revenue"},{phase:"Q4+",label:"Systems Running"},{phase:"VISION",label:"Remote Operator"}];
 const socials=[
-  {name:"YouTube",type:"youtube",url:"https://youtube.com/@babakizo1?si=eAgJFOS8qCu0wIcR",color:"#FF0000",handle:"Vlogs, builds, monthly reports"},
+  {name:"YouTube",type:"youtube",url:"https://youtube.com/@babakizo1?si=eAgJFOS8qCu0wIcR",color:"#FF0000",handle:"Long-form, vlogs, builds",primary:true},
   {name:"X (Twitter)",type:"x",url:"https://x.com/_babakizo?s=21",color:"#888",handle:"Threads, intel drops, daily logs"},
-  {name:"Instagram",type:"instagram",url:"https://www.instagram.com/_babakizo?igsh=MWUwb2c4ZWM3anM0cw%3D%3D&utm_source=qr",color:"#E1306C",handle:"Reels, carousels, BTS"},
+  {name:"Instagram",type:"instagram",url:"https://www.instagram.com/_babakizo?igsh=MWUwb2c4ZWM3anM0cw%3D%3D&utm_source=qr",color:"#E1306C",handle:"Home base. Reels, carousels, BTS",primary:true},
   {name:"LinkedIn",type:"linkedin",url:"https://www.linkedin.com/in/kingsley-olukanni-572420196?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",color:"#0A66C2",handle:"Professional narrative"},
-  {name:"TikTok",type:"tiktok",url:"https://www.tiktok.com/@_babakizo?_r=1&_t=ZS-954XJXdRYJk",color:"#00C8C8",handle:"Short-form, discipline"},
+  {name:"TikTok",type:"tiktok",url:"https://www.tiktok.com/@_babakizo?_r=1&_t=ZS-954XJXdRYJk",color:"#00C8C8",handle:"Short-form, discipline, raw",primary:true},
   {name:"Snapchat",type:"snapchat",url:"https://snapchat.com/t/vmQWYqUY",color:"#CCCC00",handle:"Day-in-the-life, raw"},
   {name:"GitHub",type:"github",url:"https://github.com/babakizo420",color:"#999",handle:"Code, repos, build logs"},
   {name:"Gumroad",type:"gumroad",url:"https://utilityvault.gumroad.com",color:"#FF90E8",handle:"Templates, digital products"},
@@ -67,6 +67,10 @@ const projects=[
   {name:"YT Intro Animation",desc:"3D cross-shield emblem with cinematic particle effects.",tech:["Three.js","Canvas"],status:"Complete",accent:"#D4A843"},
 ];
 
+// REPLACE LATER: drop a photo in /public (e.g. "/kingsley.jpg") and set heroPhoto to that path
+// to swap the creative emblem for your real face. Leave null to keep the emblem.
+const heroPhoto = null;
+
 const sp={
   youtube:<><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="currentColor" stroke="none"/></>,
   instagram:<><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></>,
@@ -82,11 +86,17 @@ function SI({type,size=18,color}){
 }
 
 export default function BabakizoV5Final(){
-  const typed=useTyper(["Cybersecurity Operator.","Systems Architect.","Faith-Driven Founder.","CAF Reservist.","Building from the Margins.","Documenting Everything."]);
+  const typed=useTyper(["Cybersecurity Operator.","Systems Architect.","Faith-Driven Founder.","Muay Thai & Miles.","Trains Like He Builds.","CAF Reservist.","Building from the Margins.","Documenting Everything."]);
   const[heroVis,setHeroVis]=useState(false);
   const[scrollY,setScrollY]=useState(0);
   const[menuOpen,setMenuOpen]=useState(false);
   const[dark,setDark]=useState(true);
+  const[email,setEmail]=useState("");
+  const[subd,setSubd]=useState(false);
+  // REPLACE LATER: paste your Formspree/ConvertKit/Mailchimp POST URL here to collect emails live.
+  // Empty = signups are saved to the visitor's localStorage as a stopgap so the form already works.
+  const NEWSLETTER_ENDPOINT="";
+  const submitEmail=(e)=>{e.preventDefault();if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))return;if(NEWSLETTER_ENDPOINT){fetch(NEWSLETTER_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email})}).catch(()=>{});}else{try{const l=JSON.parse(localStorage.getItem("build-report-subs")||"[]");l.push({email,at:Date.now()});localStorage.setItem("build-report-subs",JSON.stringify(l));}catch(err){}}setSubd(true);setEmail("");};
   const T=dark?themes.dark:themes.light;
   const[storyRef,storyIn]=useInView(0.08);
   const[divRef,divIn]=useInView(0.05);
@@ -152,6 +162,16 @@ export default function BabakizoV5Final(){
         {/* HERO */}
         <section style={{minHeight:"100vh",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",position:"relative",padding:"130px 24px 70px",textAlign:"center",overflow:"hidden"}}>
           <div style={{position:"absolute",top:"20%",left:"50%",transform:"translate(-50%,-50%)",width:500,height:500,borderRadius:"50%",background:`radial-gradient(circle, ${T.goldDim} 0%, transparent 60%)`,pointerEvents:"none",animation:"breathe 8s ease infinite"}}/>
+          <div style={{opacity:heroVis?1:0,transform:heroVis?"translateY(0) scale(1)":"translateY(10px) scale(0.95)",transition:"all 1.1s cubic-bezier(0.16,1,0.3,1)",marginBottom:30}}>
+            {heroPhoto?
+              <img src={heroPhoto} alt="Kingsley Olukanni" style={{width:132,height:132,borderRadius:"50%",objectFit:"cover",border:`2px solid ${T.gold}`,boxShadow:`0 0 0 6px ${T.goldGlow}, 0 18px 50px rgba(0,0,0,0.5)`}}/>
+              :
+              <div style={{width:132,height:132,borderRadius:"50%",position:"relative",display:"flex",alignItems:"center",justifyContent:"center",background:`radial-gradient(circle at 50% 32%, ${T.card}, #050505)`,border:`1.5px solid ${T.gold}55`,boxShadow:`0 0 0 6px ${T.goldGlow}, 0 18px 50px rgba(0,0,0,0.5), inset 0 0 34px ${T.goldGlow}`,animation:"glowPulse 5s infinite"}}>
+                <div style={{position:"absolute",inset:-1,borderRadius:"50%",background:`conic-gradient(from 210deg, transparent, ${T.gold}66, transparent 55%)`,WebkitMaskImage:"radial-gradient(circle, transparent 61%, #000 63%)",maskImage:"radial-gradient(circle, transparent 61%, #000 63%)"}}/>
+                <CrossIcon size={48} color={T.gold}/>
+              </div>
+            }
+          </div>
           <div style={{opacity:heroVis?1:0,transform:heroVis?"translateY(0)":"translateY(16px)",transition:"all 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s",display:"flex",alignItems:"center",gap:14,marginBottom:32}}>
             <div style={{width:40,height:2,background:`linear-gradient(to right, transparent, ${T.gold})`}}/>
             <span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:12,color:T.gold,letterSpacing:5,textTransform:"uppercase",fontWeight:700}}>Operator&nbsp;&nbsp;·&nbsp;&nbsp;Builder&nbsp;&nbsp;·&nbsp;&nbsp;Believer</span>
@@ -167,6 +187,10 @@ export default function BabakizoV5Final(){
             I build systems that create freedom. Documenting every step from the factory floor to the founder's desk.
             <br/><span style={{color:T.gold,fontStyle:"italic"}}>No shortcuts. Just proof-of-work.</span>
           </p>
+          <div style={{display:"flex",gap:12,flexWrap:"wrap",justifyContent:"center",marginTop:34,opacity:heroVis?1:0,transform:heroVis?"translateY(0)":"translateY(14px)",transition:"all 1s cubic-bezier(0.16,1,0.3,1) 1s"}}>
+            <button onClick={()=>scrollTo("connect")} style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:12,fontWeight:700,letterSpacing:1.5,textTransform:"uppercase",color:dark?"#050505":"#fff",background:T.gold,border:"none",borderRadius:10,padding:"13px 26px",cursor:"pointer",boxShadow:`0 12px 34px ${T.goldDim}`}}>Join the Build Report</button>
+            <a href="https://pejji.com" target="_blank" rel="noopener noreferrer" style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:12,fontWeight:700,letterSpacing:1.5,textTransform:"uppercase",color:T.gold,background:"transparent",border:`1px solid ${T.gold}55`,borderRadius:10,padding:"13px 26px",cursor:"pointer",textDecoration:"none",display:"inline-flex",alignItems:"center"}}>Get a Website &rarr;</a>
+          </div>
           <div style={{flex:1}}/>
           <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:10,opacity:heroVis?0.6:0,transition:"opacity 1s ease 1.4s",animation:"floatSlow 3s ease infinite",marginTop:40,marginBottom:20}}>
             <span style={{fontFamily:"'IBM Plex Mono'",fontSize:11,color:T.gold,letterSpacing:5,textTransform:"uppercase",fontWeight:600}}>Discover</span>
@@ -188,7 +212,7 @@ export default function BabakizoV5Final(){
               <span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:10,color:T.gold,letterSpacing:4,textTransform:"uppercase",fontWeight:600}}>My Story</span>
             </div>
             <h2 style={{fontFamily:"'Cormorant Garamond', serif",fontSize:"clamp(26px, 5vw, 38px)",fontWeight:700,color:T.text,lineHeight:1.15,marginBottom:24}}>I don't talk about building.<br/><span style={{color:T.gold}}>I ship.</span></h2>
-            {["Clamp Operator by trade. CAF Reservist in training. Founder of BlessedOps Group, a personal holding company with four divisions being built from the ground up.","This isn't a highlight reel. It's a build log. Cybersecurity, systems architecture, digital products, Web3 security. All under one roof, all built in the margins, all on faith."].map((t,i)=>
+            {["Clamp Operator by trade. CAF Reservist in training. Founder of BlessedOps Group, a personal holding company with four divisions built from the ground up.","I train Muay Thai and run the miles with the same discipline I build with. No shortcuts on the mat, no shortcuts in the work.","This isn't a highlight reel. It's a build log. Cybersecurity, systems architecture, digital products, Web3 security. All under one roof, all built in the margins, all on faith."].map((t,i)=>
               <p key={i} style={{fontFamily:"'DM Sans'",fontSize:14,color:T.gray,lineHeight:1.85,marginBottom:16,opacity:storyIn?1:0,transition:`opacity 0.6s ease ${0.4+i*0.15}s`}}>{t}</p>
             )}
           </div>
@@ -203,6 +227,14 @@ export default function BabakizoV5Final(){
               <span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:9,fontWeight:700,color:i===0?T.gold:T.gray,letterSpacing:2,display:"block"}}>{j.phase}</span>
               <span style={{fontFamily:"'Cormorant Garamond', serif",fontSize:13,fontWeight:600,color:i===0?T.text:T.gray,display:"block",marginTop:4}}>{j.label}</span>
             </div>)}
+          </div>
+          <div style={{display:"flex",flexWrap:"wrap",gap:10,marginTop:36,opacity:storyIn?1:0,transition:"opacity 0.8s ease 0.75s"}}>
+            {[{k:"Train",d:"Muay Thai · Miles · Discipline"},{k:"Build",d:"Pejji · Securva · Systems"},{k:"Secure",d:"Audits · Compliance · Defense"},{k:"Live",d:"The journey, documented raw"}].map(p=>
+              <div key={p.k} style={{flex:"1 1 132px",padding:"15px 16px",background:T.card,border:`1px solid ${T.border}`,borderRadius:12}}>
+                <div style={{fontFamily:"'Cormorant Garamond', serif",fontSize:19,fontWeight:700,color:T.gold,lineHeight:1}}>{p.k}</div>
+                <div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:9,color:T.gray,letterSpacing:0.5,marginTop:7,lineHeight:1.5,textTransform:"uppercase"}}>{p.d}</div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -265,19 +297,36 @@ export default function BabakizoV5Final(){
             <span style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:10,color:T.gold,letterSpacing:4,textTransform:"uppercase",fontWeight:600,opacity:socialIn?1:0,transition:"opacity 0.6s"}}>Follow the Build</span>
             <h2 style={{fontFamily:"'Cormorant Garamond', serif",fontSize:"clamp(26px, 5vw, 38px)",fontWeight:700,color:T.text,marginTop:10,opacity:socialIn?1:0,transform:socialIn?"translateY(0)":"translateY(14px)",transition:"all 0.6s ease 0.1s"}}>Let's <span style={{color:T.gold}}>Connect</span></h2>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-            {socials.map((s,i)=><a key={s.name} href={s.url} style={{display:"flex",alignItems:"center",gap:10,padding:"13px 14px",background:T.card,border:`1px solid ${T.border}`,borderRadius:10,textDecoration:"none",color:T.text,opacity:socialIn?1:0,transform:socialIn?"translateY(0)":"translateY(12px)",transition:`all 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${i*0.04}s`}}
-              onMouseEnter={e=>{e.currentTarget.style.borderColor=s.color;e.currentTarget.style.background=`${s.color}08`}}
-              onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border;e.currentTarget.style.background=T.card}}>
-              <div style={{color:s.color,display:"flex",alignItems:"center"}}><SI type={s.type} size={16} color={s.color}/></div>
-              <div style={{textAlign:"left"}}><div style={{fontFamily:"'DM Sans'",fontSize:12,fontWeight:600}}>{s.name}</div><div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,color:T.gray,marginTop:1}}>{s.handle}</div></div>
+          <div style={{display:"flex",flexDirection:"column",gap:8}}>
+            {socials.filter(s=>s.primary).map((s,i)=><a key={s.name} href={s.url} style={{display:"flex",alignItems:"center",gap:13,padding:"16px 18px",background:`linear-gradient(135deg, ${s.color}0e, ${T.card})`,border:`1px solid ${s.color}33`,borderRadius:13,textDecoration:"none",color:T.text,opacity:socialIn?1:0,transform:socialIn?"translateY(0)":"translateY(12px)",transition:`all 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${i*0.06}s`}}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor=s.color;e.currentTarget.style.background=`${s.color}18`}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor=`${s.color}33`;e.currentTarget.style.background=`linear-gradient(135deg, ${s.color}0e, ${T.card})`}}>
+              <div style={{color:s.color,display:"flex",alignItems:"center"}}><SI type={s.type} size={22} color={s.color}/></div>
+              <div style={{textAlign:"left",flex:1}}><div style={{fontFamily:"'DM Sans', sans-serif",fontSize:15,fontWeight:700}}>{s.name}</div><div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:9,color:T.gray,marginTop:2}}>{s.handle}</div></div>
+              <span style={{color:s.color,fontSize:16}}>&rarr;</span>
+            </a>)}
+          </div>
+          <div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:9,color:T.gray,letterSpacing:3,textTransform:"uppercase",margin:"22px 0 12px",opacity:socialIn?1:0,transition:"opacity 0.6s ease 0.3s"}}>Also on</div>
+          <div style={{display:"flex",flexWrap:"wrap",gap:8,justifyContent:"center"}}>
+            {socials.filter(s=>!s.primary).map((s,i)=><a key={s.name} href={s.url} title={s.name} style={{display:"flex",alignItems:"center",gap:8,padding:"9px 13px",background:T.card,border:`1px solid ${T.border}`,borderRadius:9,textDecoration:"none",color:T.text,opacity:socialIn?1:0,transition:`all 0.4s ease ${0.3+i*0.04}s`}}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor=s.color}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor=T.border}}>
+              <div style={{color:s.color,display:"flex"}}><SI type={s.type} size={14} color={s.color}/></div>
+              <span style={{fontFamily:"'DM Sans', sans-serif",fontSize:11,fontWeight:600}}>{s.name}</span>
             </a>)}
           </div>
           <div style={{marginTop:40,padding:"28px 22px",background:`linear-gradient(145deg, ${T.goldGlow}, ${T.card})`,border:`1px solid ${T.gold}15`,borderRadius:18,animation:"glowPulse 5s infinite",opacity:socialIn?1:0,transition:"opacity 0.6s ease 0.4s"}}>
             <CrossIcon size={18} color={`${T.gold}90`}/>
             <h3 style={{fontFamily:"'Cormorant Garamond', serif",fontSize:18,fontWeight:700,color:T.text,marginTop:12,marginBottom:8}}>The Build Report</h3>
             <p style={{fontFamily:"'DM Sans'",fontSize:12,color:T.gray,lineHeight:1.7,marginBottom:18,maxWidth:320,margin:"0 auto 18px"}}>Monthly dispatch. Build updates, cybersecurity intel, behind-the-scenes. No spam. Just proof.</p>
-            <div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:9,fontWeight:600,color:T.gold,padding:"9px 20px",border:`1px solid ${T.gold}35`,borderRadius:8,display:"inline-block",letterSpacing:2,textTransform:"uppercase"}}>Coming Soon</div>
+            {subd?
+              <div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:11,fontWeight:600,color:T.gold,letterSpacing:1,padding:"8px 0"}}>&#10003; You're in. Watch your inbox.</div>
+              :
+              <form onSubmit={submitEmail} style={{display:"flex",gap:8,flexWrap:"wrap",justifyContent:"center",maxWidth:340,margin:"0 auto"}}>
+                <input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="your@email.com" required aria-label="Email address" style={{flex:"1 1 180px",fontFamily:"'DM Sans', sans-serif",fontSize:13,padding:"11px 14px",borderRadius:9,border:`1px solid ${T.border}`,background:dark?"#0a0a0a":"#fff",color:T.text,outline:"none"}}/>
+                <button type="submit" style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:11,fontWeight:700,color:dark?"#050505":"#fff",background:T.gold,border:"none",borderRadius:9,padding:"11px 22px",cursor:"pointer",letterSpacing:1.5,textTransform:"uppercase"}}>Join</button>
+              </form>
+            }
           </div>
         </section>
 
