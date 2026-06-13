@@ -45,7 +45,7 @@ const socials=[
   {name:"Instagram",type:"instagram",url:"https://www.instagram.com/_babakizo?igsh=MWUwb2c4ZWM3anM0cw%3D%3D&utm_source=qr",color:"#E1306C",handle:"Home base. Reels, carousels, BTS",primary:true},
   {name:"LinkedIn",type:"linkedin",url:"https://www.linkedin.com/in/kingsley-olukanni-572420196?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",color:"#0A66C2",handle:"Professional narrative"},
   {name:"TikTok",type:"tiktok",url:"https://www.tiktok.com/@_babakizo?_r=1&_t=ZS-954XJXdRYJk",color:"#00C8C8",handle:"Short-form, discipline, raw",primary:true},
-  {name:"Snapchat",type:"snapchat",url:"https://snapchat.com/t/vmQWYqUY",color:"#CCCC00",handle:"Day-in-the-life, raw"},
+  {name:"Snapchat",type:"snapchat",url:"https://snapchat.com/t/PjcOdOFg",color:"#CCCC00",handle:"Day-in-the-life, raw"},
   {name:"GitHub",type:"github",url:"https://github.com/babakizo420",color:"#999",handle:"Code, repos, build logs"},
   {name:"Gumroad",type:"gumroad",url:"https://utilityvault.gumroad.com",color:"#FF90E8",handle:"Templates, digital products"},
 ];
