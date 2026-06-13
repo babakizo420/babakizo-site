@@ -15,17 +15,14 @@ npm run dev
 npm run build
 ```
 
-## Deploy to Vercel
+## Deploy to Cloudflare Pages
 
 1. Push this repo to GitHub
-2. Go to [vercel.com](https://vercel.com) and sign in with GitHub
-3. Click "Import Project" and select this repo
-4. Vercel auto-detects React — just click Deploy
-5. Once live, go to Settings > Domains > Add `babakizo.com`
-6. Update your domain DNS:
-   - Add an A record pointing to `76.76.21.21`
-   - Or add a CNAME record pointing to `cname.vercel-dns.com`
-7. Vercel handles SSL automatically
+2. In the Cloudflare dashboard, go to Workers & Pages > Create > Pages > Connect to Git
+3. Select this repo. Build command: `npm run build`. Build output directory: `build`
+4. Deploy. Cloudflare auto-builds on every push to `main`
+5. Add the custom domain `babakizo.com` under the project's Custom domains tab
+6. Cloudflare handles DNS and SSL automatically (the `public/_headers` file sets security headers)
 
 ## How to Update Your Social Links
 
@@ -39,7 +36,7 @@ const socials = [
 ];
 ```
 
-Push to GitHub and Vercel auto-deploys in ~30 seconds.
+Push to GitHub and Cloudflare Pages auto-deploys in ~30 seconds.
 
 ## How to Add Content to the Feed
 
@@ -71,7 +68,7 @@ Status options: "Live", "Complete", "Building", "In Progress", "Designing"
 - React 18
 - No external UI libraries (pure CSS-in-JS)
 - Canvas API for animated mesh background
-- Deployed on Vercel
+- Deployed on Cloudflare Pages
 
 ## Structure
 
