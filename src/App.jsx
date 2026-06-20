@@ -218,7 +218,7 @@ export default function BabakizoV5Final(){
             )}
           </div>
           <div ref={statsRef} style={{display:"flex",gap:12,marginTop:28,flexWrap:"wrap",opacity:statsIn?1:0,transition:"opacity 0.8s ease"}}>
-            {[{n:4,l:"Divisions"},{n:1,l:"Holding Co."},{n:0,l:"Excuses"}].map(s=>{const c=useCountUp(s.n,1400,statsIn);return <div key={s.l} style={{padding:"16px 18px",background:T.card,border:`1px solid ${T.border}`,borderRadius:12,flex:"1 1 90px",textAlign:"center",transition:"all 0.4s"}}><div style={{fontFamily:"'Cormorant Garamond', serif",fontSize:26,fontWeight:700,color:T.gold,lineHeight:1}}>{c}</div><div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,color:T.gray,letterSpacing:2,textTransform:"uppercase",marginTop:6}}>{s.l}</div></div>})}
+            {[{n:4,l:"Divisions"},{n:1,l:"Holding Co."},{n:2,l:"CVEs Assigned"}].map(s=>{const c=useCountUp(s.n,1400,statsIn);return <div key={s.l} style={{padding:"16px 18px",background:T.card,border:`1px solid ${T.border}`,borderRadius:12,flex:"1 1 90px",textAlign:"center",transition:"all 0.4s"}}><div style={{fontFamily:"'Cormorant Garamond', serif",fontSize:26,fontWeight:700,color:T.gold,lineHeight:1}}>{c}</div><div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,color:T.gray,letterSpacing:2,textTransform:"uppercase",marginTop:6}}>{s.l}</div></div>})}
           </div>
           <div style={{display:"flex",gap:0,marginTop:36,overflow:"hidden",opacity:storyIn?1:0,transition:"opacity 0.8s ease 0.6s"}}>
             {journey.map((j,i)=><div key={j.phase} style={{flex:1,textAlign:"center",position:"relative",padding:"16px 4px 0"}}>
