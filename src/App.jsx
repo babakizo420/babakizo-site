@@ -22,8 +22,8 @@ function useCountUp(target,dur=1600,start=false){const[v,setV]=useState(0);useEf
 function Carousel({children,bg,gold}){const sr=useRef(null);const[cl,setCl]=useState(false);const[cr,setCr]=useState(true);const check=()=>{const e=sr.current;if(!e)return;setCl(e.scrollLeft>10);setCr(e.scrollLeft<e.scrollWidth-e.clientWidth-10)};useEffect(()=>{const e=sr.current;check();if(e){e.addEventListener('scroll',check,{passive:true});return()=>e.removeEventListener('scroll',check)}},[]);return <div style={{position:"relative"}}>{cl&&<div style={{position:"absolute",left:0,top:0,bottom:0,width:40,background:`linear-gradient(to right, ${bg}, transparent)`,zIndex:5,pointerEvents:"none"}}/>}{cr&&<div style={{position:"absolute",right:0,top:0,bottom:0,width:40,background:`linear-gradient(to left, ${bg}, transparent)`,zIndex:5,pointerEvents:"none"}}/>}{cl&&<button onClick={()=>sr.current?.scrollBy({left:-280,behavior:"smooth"})} style={{position:"absolute",left:4,top:"50%",transform:"translateY(-50%)",zIndex:10,width:32,height:32,borderRadius:"50%",background:`${gold}15`,border:`1px solid ${gold}30`,color:gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>←</button>}{cr&&<button onClick={()=>sr.current?.scrollBy({left:280,behavior:"smooth"})} style={{position:"absolute",right:4,top:"50%",transform:"translateY(-50%)",zIndex:10,width:32,height:32,borderRadius:"50%",background:`${gold}15`,border:`1px solid ${gold}30`,color:gold,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>→</button>}<div ref={sr} style={{display:"flex",gap:14,overflowX:"auto",scrollSnapType:"x mandatory",WebkitOverflowScrolling:"touch",scrollbarWidth:"none",msOverflowStyle:"none",padding:"4px 2px 12px"}}>{children}</div></div>}
 
 const divisions=[
-  {name:"Pejji",tag:"Web Agency",desc:"Security-first websites for Nigerian SMEs. Starting from $40 USD (₦60,000). Paystack live, NDPA compliant from day 1.",icon:"globe",accent:"#4ECDC4",url:"https://pejji.com"},
-  {name:"Securva",tag:"Cybersecurity SaaS",desc:"Snapshot Pro PDFs + NDPA compliance reports + audit Skills. Methodology proven stack-agnostic across web2 + web3.",icon:"shield",accent:"#7B68EE",url:"https://securva.net"},
+  {name:"Pejji",tag:"Web Agency",desc:"Security-first websites for Nigerian SMEs. First client live in production. From $40 USD (₦60,000), Paystack and NDPA compliant from day one.",icon:"globe",accent:"#4ECDC4",url:"https://pejji.com"},
+  {name:"Securva",tag:"Cybersecurity",desc:"Real security research with assigned CVEs to our name. NDPA compliance audits, security snapshots, and OSS vulnerability disclosure across web2 and web3.",icon:"shield",accent:"#7B68EE",url:"https://securva.net"},
   {name:"Utility Vault",tag:"Digital Products",desc:"Templates, SOPs, and tools. Systems packaged for builders who move fast.",icon:"bolt",accent:"#FFB347",url:"https://utilityvault.gumroad.com"},
   {name:"CyberArmor",tag:"Web3 Security",desc:"Smart contract audits, DeFi breakdowns, and Web3 threat intelligence.",icon:"lock",accent:"#FF6B6B",url:null},
 ];
@@ -50,6 +50,7 @@ const socials=[
   {name:"Gumroad",type:"gumroad",url:"https://utilityvault.gumroad.com",color:"#FF90E8",handle:"Templates, digital products"},
 ];
 const contentItems=[
+  {title:"Securva's First CVEs",type:"win",desc:"Assigned CVE numbers for real vulnerabilities we found and disclosed in Gitea and File Browser. Proof, not marketing.",link:"https://securva.net/research",accent:"#FF6B6B"},
   {title:"ARGUS Build Log",type:"build",desc:"Personal recon engine in active build. 8 EYES + Brain + Mouth + supports running on box.",link:"https://argus.babakizo.com",accent:"#D4A843"},
   {title:"$40 USD / ₦60K Website Breakdown",type:"carousel",desc:"What each Pejji tier includes - from Card to Pro Max",link:"https://pejji.com/services",accent:"#4ECDC4"},
   {title:"Sterling Bank Breach",type:"analysis",desc:"NDPC investigating 900K accounts, 3000+ employee records exposed",link:"https://securva.net",accent:"#FF6B6B"},
@@ -58,10 +59,10 @@ const contentItems=[
 ];
 const projects=[
   {name:"ARGUS",desc:"Personal continuous-recon engine in active build. 8 EYES + Brain + Mouth + supports running 24/7 on box. Build log at argus.babakizo.com.",tech:["Python","SQLite","Cloudflare Pages"],status:"Building",accent:"#D4A843"},
-  {name:"Securva Methodology Stack",desc:"Audit Skills + 39 banked rules + 5 sub-rules. Stack-agnostic across web2 + web3, validated on multiple protocols.",tech:["Claude","Python","Methodology"],status:"Live",accent:"#FF6B6B"},
+  {name:"Securva CVE Pipeline",desc:"Assigned CVEs credited to us: CVE-2026-27761 (Gitea) and CVE-2026-55667 (File Browser), with more advisories in disclosure. Self-hosted OSS audits via an incomplete-fix methodology, web2 and web3.",tech:["CVEs","Python","Methodology"],status:"Live",accent:"#FF6B6B"},
   {name:"Snapshot Pro PDF",desc:"Automated security snapshot + NDPA compliance report. 10-section PDF intake pipeline.",tech:["Claude","Cloudflare Workers","R2"],status:"Live",accent:"#D4A843"},
   {name:"BlessedOps Group",desc:"Holding company hub connecting Pejji, Securva, Utility Vault, CyberArmor.",tech:["React"],status:"Live",accent:"#4ECDC4"},
-  {name:"Pejji Web Agency",desc:"Demo sites, CI/CD pipeline, NDPA compliance. Paystack rail live. Serving Nigerian SMEs.",tech:["Astro","Cloudflare","Paystack"],status:"Live",accent:"#7B68EE"},
+  {name:"Pejji Web Agency",desc:"First paying client shipped to production at dengdetails.com. CI/CD pipeline, Paystack rail live, NDPA compliant. Serving Nigerian SMEs.",tech:["Astro","Cloudflare","Paystack"],status:"Live",accent:"#7B68EE"},
   {name:"babakizo.com",desc:"Personal brand HQ with animated mesh, scroll reveals, 3D elements.",tech:["React","Three.js"],status:"Live",accent:"#D4A843"},
   {name:"Security Dashboard",desc:"Live portfolio dashboard showcasing open source security tools.",tech:["React","GitHub Pages"],status:"Live",accent:"#FFB347"},
   {name:"YT Intro Animation",desc:"3D cross-shield emblem with cinematic particle effects.",tech:["Three.js","Canvas"],status:"Complete",accent:"#D4A843"},
