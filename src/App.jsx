@@ -50,7 +50,7 @@ const socials=[
   {name:"Gumroad",type:"gumroad",url:"https://utilityvault.gumroad.com",color:"#FF90E8",handle:"Templates, digital products"},
 ];
 const contentItems=[
-  {title:"Two Published CVEs",type:"win",desc:"Two CVEs now published for real vulnerabilities we found in Gitea and File Browser, software used by hundreds of millions. The maintainers credited us, File Browser rated High. Verify them on the disclosures wall. Proof, not marketing.",link:"https://securva.net/research/disclosures",accent:"#FF6B6B"},
+  {title:"Three Public Advisories",type:"win",desc:"Three public security advisories now credit us for real vulnerabilities we found in Gitea, File Browser, and OpenBao, software used by hundreds of millions. Two carry assigned CVEs, File Browser rated High. The OpenBao one came from watching a fixed Vault bug that still lived in the fork. Proof, not marketing.",link:"https://securva.net/research/disclosures",accent:"#FF6B6B"},
   {title:"ARGUS Build Log",type:"build",desc:"Personal recon engine in active build. 8 EYES + Brain + Mouth + supports running on box.",link:"https://argus.babakizo.com",accent:"#D4A843"},
   {title:"$40 USD / ₦60K Website Breakdown",type:"carousel",desc:"What each Pejji tier includes - from Card to Pro Max",link:"https://pejji.com/services",accent:"#4ECDC4"},
   {title:"Sterling Bank Breach",type:"analysis",desc:"NDPC investigating 900K accounts, 3000+ employee records exposed",link:"https://securva.net",accent:"#FF6B6B"},
@@ -59,7 +59,7 @@ const contentItems=[
 ];
 const projects=[
   {name:"ARGUS",desc:"Personal continuous-recon engine in active build. 8 EYES + Brain + Mouth + supports running 24/7 on box. Build log at argus.babakizo.com.",tech:["Python","SQLite","Cloudflare Pages"],status:"Building",accent:"#D4A843"},
-  {name:"Securva CVE Pipeline",desc:"Published CVEs credited to us: CVE-2026-27761 (Gitea) and CVE-2026-55667 (File Browser, rated High), with more advisories in disclosure. Self-hosted OSS audits via an incomplete-fix methodology, web2 and web3.",tech:["CVEs","Python","Methodology"],status:"Live",accent:"#FF6B6B"},
+  {name:"Securva CVE Pipeline",desc:"Public advisories credited to us: CVE-2026-27761 (Gitea), CVE-2026-55667 (File Browser, rated High), and GHSA-xp3c-3jw3-4vcr (OpenBao, Moderate), with more in disclosure. Self-hosted OSS audits via incomplete-fix and cross-fork methodology, web2 and web3.",tech:["CVEs","Advisories","Methodology"],status:"Live",accent:"#FF6B6B"},
   {name:"Snapshot Pro PDF",desc:"Automated security snapshot + NDPA compliance report. 10-section PDF intake pipeline.",tech:["Claude","Cloudflare Workers","R2"],status:"Live",accent:"#D4A843"},
   {name:"BlessedOps Group",desc:"Holding company hub connecting Pejji, Securva, Utility Vault, CyberArmor.",tech:["React"],status:"Live",accent:"#4ECDC4"},
   {name:"Pejji Web Agency",desc:"First paying client shipped to production at dengdetails.com. CI/CD pipeline, Paystack rail live, NDPA compliant. Serving Nigerian SMEs.",tech:["Astro","Cloudflare","Paystack"],status:"Live",accent:"#7B68EE"},
@@ -218,7 +218,7 @@ export default function BabakizoV5Final(){
             )}
           </div>
           <div ref={statsRef} style={{display:"flex",gap:12,marginTop:28,flexWrap:"wrap",opacity:statsIn?1:0,transition:"opacity 0.8s ease"}}>
-            {[{n:4,l:"Divisions"},{n:1,l:"Holding Co."},{n:2,l:"Published CVEs"}].map(s=>{const c=useCountUp(s.n,1400,statsIn);return <div key={s.l} style={{padding:"16px 18px",background:T.card,border:`1px solid ${T.border}`,borderRadius:12,flex:"1 1 90px",textAlign:"center",transition:"all 0.4s"}}><div style={{fontFamily:"'Cormorant Garamond', serif",fontSize:26,fontWeight:700,color:T.gold,lineHeight:1}}>{c}</div><div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,color:T.gray,letterSpacing:2,textTransform:"uppercase",marginTop:6}}>{s.l}</div></div>})}
+            {[{n:4,l:"Divisions"},{n:1,l:"Holding Co."},{n:3,l:"Public Advisories"}].map(s=>{const c=useCountUp(s.n,1400,statsIn);return <div key={s.l} style={{padding:"16px 18px",background:T.card,border:`1px solid ${T.border}`,borderRadius:12,flex:"1 1 90px",textAlign:"center",transition:"all 0.4s"}}><div style={{fontFamily:"'Cormorant Garamond', serif",fontSize:26,fontWeight:700,color:T.gold,lineHeight:1}}>{c}</div><div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,color:T.gray,letterSpacing:2,textTransform:"uppercase",marginTop:6}}>{s.l}</div></div>})}
           </div>
           <div style={{display:"flex",gap:0,marginTop:36,overflow:"hidden",opacity:storyIn?1:0,transition:"opacity 0.8s ease 0.6s"}}>
             {journey.map((j,i)=><div key={j.phase} style={{flex:1,textAlign:"center",position:"relative",padding:"16px 4px 0"}}>
