@@ -50,7 +50,7 @@ const socials=[
   {name:"Gumroad",type:"gumroad",url:"https://utilityvault.gumroad.com",color:"#FF90E8",handle:"Templates, digital products"},
 ];
 const contentItems=[
-  {title:"Incus Advisory Published, High 8.5",type:"win",desc:"The creator of Incus published our security advisory for an arbitrary host-file-write flaw in its virtual-machine engine, rated High at CVSS 8.5, credited to us as reporter. That sits alongside three published CVEs (File Browser rated High, OpenBao, and Gitea) and an accepted advisory at IBM's MCP Gateway. Real vulnerabilities in software used by millions. Proof, not marketing.",link:"https://securva.net/research/disclosures",accent:"#FF6B6B"},
+  {title:"Incus Advisory Published, High 8.5",type:"win",desc:"The creator of Incus published our security advisory for an arbitrary host-file-write flaw in its virtual-machine engine, rated High at CVSS 8.5, credited to us as reporter. That sits alongside three published CVEs (File Browser rated High, OpenBao, and Gitea). Real vulnerabilities in software used by millions. Proof, not marketing.",link:"https://securva.net/research/disclosures",accent:"#FF6B6B"},
   {title:"ARGUS Build Log",type:"build",desc:"Personal recon engine in active build. 8 EYES + Brain + Mouth + supports running on box.",link:"https://argus.babakizo.com",accent:"#D4A843"},
   {title:"$40 USD / ₦60K Website Breakdown",type:"carousel",desc:"What each Pejji tier includes - from Card to Pro Max",link:"https://pejji.com/services",accent:"#4ECDC4"},
   {title:"Sterling Bank Breach",type:"analysis",desc:"NDPC investigating 900K accounts, 3000+ employee records exposed",link:"https://securva.net",accent:"#FF6B6B"},
@@ -59,7 +59,7 @@ const contentItems=[
 ];
 const projects=[
   {name:"ARGUS",desc:"Personal continuous-recon engine in active build. 8 EYES + Brain + Mouth + supports running 24/7 on box. Build log at argus.babakizo.com.",tech:["Python","SQLite","Cloudflare Pages"],status:"Building",accent:"#D4A843"},
-  {name:"Securva CVE Pipeline",desc:"Published, credited to us: CVE-2026-27761 (Gitea), CVE-2026-55667 (File Browser, rated High), CVE-2026-63131 (OpenBao, Moderate), and the Incus advisory GHSA-4qxq-p5hm-3q3p (rated High, CVSS 8.5, published by the Incus creator). Accepted and in remediation: IBM MCP Gateway (GHSA-3frw-wjxx-2p6m, SSRF plus credential forwarding), with more in disclosure. Self-hosted OSS audits via incomplete-fix and cross-fork methodology, web2 and web3.",tech:["CVEs","Incus","IBM"],status:"Live",accent:"#FF6B6B"},
+  {name:"Securva CVE Pipeline",desc:"Published, credited to us: CVE-2026-27761 (Gitea), CVE-2026-55667 (File Browser, rated High), CVE-2026-63131 (OpenBao, Moderate), and the Incus advisory GHSA-4qxq-p5hm-3q3p (rated High, CVSS 8.5, published by the Incus creator). More in disclosure. Self-hosted OSS audits via incomplete-fix and cross-fork methodology, web2 and web3.",tech:["CVEs","Incus","Methodology"],status:"Live",accent:"#FF6B6B"},
   {name:"Snapshot Pro PDF",desc:"Automated security snapshot + NDPA compliance report. 10-section PDF intake pipeline.",tech:["Claude","Cloudflare Workers","R2"],status:"Live",accent:"#D4A843"},
   {name:"BlessedOps Group",desc:"Holding company hub connecting Pejji, Securva, Utility Vault, CyberArmor.",tech:["React"],status:"Live",accent:"#4ECDC4"},
   {name:"Pejji Web Agency",desc:"First paying client shipped to production at dengdetails.com. CI/CD pipeline, Paystack rail live, NDPA compliant. Serving Nigerian SMEs.",tech:["Astro","Cloudflare","Paystack"],status:"Live",accent:"#7B68EE"},
