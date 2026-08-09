@@ -51,6 +51,7 @@ const socials=[
 ];
 const contentItems=[
   {title:"CVE-2026-16033: Canonical LXD and Incus",type:"win",desc:"Our advisory for an arbitrary host-file-write flaw in the LXC-family virtual-machine engine earned CVE-2026-16033, credited to us. The same flaw was published by both Canonical (LXD) and the creator of Incus, rated High at CVSS 8.5. That sits alongside three published CVEs (File Browser rated High, OpenBao, and Gitea). Real vulnerabilities in software used by millions. Proof, not marketing.",link:"https://securva.net/research/disclosures",accent:"#FF6B6B"},
+  {title:"Security Research (Open Source)",type:"research",desc:"Public repo: published CVE writeups, incomplete-fix tooling, and MCP / AI-agent security audits. The methodology, in the open.",link:"https://github.com/babakizo420/security-research",accent:"#7B68EE"},
   {title:"ARGUS Build Log",type:"build",desc:"Personal recon engine in active build. 8 EYES + Brain + Mouth + supports running on box.",link:"https://argus.babakizo.com",accent:"#D4A843"},
   {title:"$40 USD / ₦60K Website Breakdown",type:"carousel",desc:"What each Pejji tier includes - from Card to Pro Max",link:"https://pejji.com/services",accent:"#4ECDC4"},
   {title:"Sterling Bank Breach",type:"analysis",desc:"NDPC investigating 900K accounts, 3000+ employee records exposed",link:"https://securva.net",accent:"#FF6B6B"},
@@ -218,7 +219,7 @@ export default function BabakizoV5Final(){
             )}
           </div>
           <div ref={statsRef} style={{display:"flex",gap:12,marginTop:28,flexWrap:"wrap",opacity:statsIn?1:0,transition:"opacity 0.8s ease"}}>
-            {[{n:4,l:"Divisions"},{n:1,l:"Holding Co."},{n:3,l:"Published CVEs"}].map(s=>{const c=useCountUp(s.n,1400,statsIn);return <div key={s.l} style={{padding:"16px 18px",background:T.card,border:`1px solid ${T.border}`,borderRadius:12,flex:"1 1 90px",textAlign:"center",transition:"all 0.4s"}}><div style={{fontFamily:"'Cormorant Garamond', serif",fontSize:26,fontWeight:700,color:T.gold,lineHeight:1}}>{c}</div><div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,color:T.gray,letterSpacing:2,textTransform:"uppercase",marginTop:6}}>{s.l}</div></div>})}
+            {[{n:4,l:"Divisions"},{n:1,l:"Holding Co."},{n:4,l:"Published CVEs"}].map(s=>{const c=useCountUp(s.n,1400,statsIn);return <div key={s.l} style={{padding:"16px 18px",background:T.card,border:`1px solid ${T.border}`,borderRadius:12,flex:"1 1 90px",textAlign:"center",transition:"all 0.4s"}}><div style={{fontFamily:"'Cormorant Garamond', serif",fontSize:26,fontWeight:700,color:T.gold,lineHeight:1}}>{c}</div><div style={{fontFamily:"'IBM Plex Mono', monospace",fontSize:8,color:T.gray,letterSpacing:2,textTransform:"uppercase",marginTop:6}}>{s.l}</div></div>})}
           </div>
           <div style={{display:"flex",gap:0,marginTop:36,overflow:"hidden",opacity:storyIn?1:0,transition:"opacity 0.8s ease 0.6s"}}>
             {journey.map((j,i)=><div key={j.phase} style={{flex:1,textAlign:"center",position:"relative",padding:"16px 4px 0"}}>
